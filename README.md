@@ -1,0 +1,2 @@
+# SimulacionLegorreta
+Proyecto final graficos
