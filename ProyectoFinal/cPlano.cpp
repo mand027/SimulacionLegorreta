@@ -20,7 +20,8 @@ Plano::~Plano() {
 }
 
 void Plano::draw() {
-    glmDraw(plano,GLM_SMOOTH | GLM_TEXTURE);
+    glmDraw(plano, GLM_SMOOTH | GLM_TEXTURE);
+
 }
 
 void Plano::update() {

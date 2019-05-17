@@ -35,6 +35,12 @@ public:
     float* position;
     float radius;
     float velocidad;
+    float maxBrazo;
+    float minBrazo;
+    float* bIzq;
+    float* bDer;
+    int dirD;
+    int dirI;
     
     //material
     GLfloat* ka;
@@ -42,10 +48,11 @@ public:
     GLfloat* ks;
     GLfloat* alpha;
     
-    Playere(float* p, float m, float r);
+    Playere();
     ~Playere();
     void Draw();
     void Update();
     //    float* substractVectors(float* v1, float* v2);
     void Moverse();
+    void Animar();
 };

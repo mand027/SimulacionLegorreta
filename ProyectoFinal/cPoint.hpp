@@ -34,8 +34,8 @@ public:
     Point(float _x, float _y, float _z);
     Point(Point* other);
     ~Point();
+    
     float x, y, z;
-    void draw();
     void update();
     Point* multiplyByScalar(float s);
     Point* add(Point* other);

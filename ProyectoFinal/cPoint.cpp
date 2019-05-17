@@ -46,19 +46,6 @@ Point* Point::add(Point* other) {
     return p;
 }
 
-void Point::draw() {
-    glPushMatrix();
-    {
-        glTranslatef(x, y, z);
-//        glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ka);
-//        glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, kd);
-//        glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, ks);
-//        glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, alpha);
-        glutSolidSphere(0.2, 10, 10);
-    }
-    glPopMatrix();
-}
-
 void Point::update() {
     
 }

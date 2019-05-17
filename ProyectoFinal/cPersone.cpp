@@ -10,10 +10,20 @@
 #include "math.h"
 
 
-Persone::Persone(float* p, float v){
-    position = p;
+int randomBetween (float min, float max){
+    float random = min + (max - min) * (float)rand() / RAND_MAX;
+    return random;
+}
+
+Persone::Persone(float linea_, float v){
+    position = new float[3];
+    position[0] = 0;
+    position[1] = 0;
+    position[2] = 0;
+    linea = linea_;
     velocidad = v;
-    t = 0;
+    t = 0.01;
+    dir = 1;
     maxBrazo = 0.12f;
     minBrazo = -0.12f;
     
@@ -31,8 +41,8 @@ Persone::Persone(float* p, float v){
     dirD = 1;
     dirI = -1;
     
-    float min = 0;
-    float max = 1;
+    float min = 0.01f;
+    float max = 0.99f;
     ka = new GLfloat[4];
     ka[0] = min + (max - min) * (float)rand() / RAND_MAX; //red
     ka[1] = min + (max - min) * (float)rand() / RAND_MAX; //green
@@ -60,8 +70,13 @@ void Persone::Draw(){
     
     glPushMatrix();
     {
-        glColor3f(1.0f, 1.0f, 1.0f);
+        glTranslatef(position[0], position[1], position[2]);
+        glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ka);
+        glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, kd);
+        glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, ks);
+        glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, alpha);
         glutSolidSphere(0.20f, 10, 10);
+        
         glPushMatrix();
         {
             glTranslatef(bIzq[0], bIzq[1], bIzq[2]);
