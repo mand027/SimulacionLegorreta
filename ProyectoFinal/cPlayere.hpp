@@ -27,18 +27,25 @@
 
 #include <stdio.h>
 #include <math.h>
+#include "cPlayere.hpp"
 
-class Point
-{
+class Playere{
 public:
-    Point(float _x, float _y, float _z);
-    Point(Point* other);
-    ~Point();
-    float x, y, z;
-    void draw();
-    void update();
-    Point* multiplyByScalar(float s);
-    Point* add(Point* other);
+    //variables
+    float* position;
+    float radius;
+    float velocidad;
     
+    //material
+    GLfloat* ka;
+    GLfloat* kd;
+    GLfloat* ks;
+    GLfloat* alpha;
+    
+    Playere(float* p, float m, float r);
+    ~Playere();
+    void Draw();
+    void Update();
+    //    float* substractVectors(float* v1, float* v2);
+    void Moverse();
 };
-

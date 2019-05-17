@@ -15,6 +15,7 @@
 Point::Point(float _x, float _y, float _z)
 {
     x = _x; y = _y; z = _z;
+    
 }
 
 Point::Point(Point* other)
@@ -49,8 +50,11 @@ void Point::draw() {
     glPushMatrix();
     {
         glTranslatef(x, y, z);
-        glColor3f(1, 0, 0); //x
-        glutSolidSphere(0.4, 10, 10);
+//        glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ka);
+//        glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, kd);
+//        glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, ks);
+//        glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, alpha);
+        glutSolidSphere(0.2, 10, 10);
     }
     glPopMatrix();
 }
