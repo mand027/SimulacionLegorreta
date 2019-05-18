@@ -42,6 +42,9 @@ public:
     int dirD;
     int dirI;
     
+    int dir;
+    int LoR;
+    
     //material
     GLfloat* ka;
     GLfloat* kd;

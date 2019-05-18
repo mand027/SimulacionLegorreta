@@ -14,12 +14,14 @@
 
 Playere::Playere(){
     position = new float[3];
-    position[0] = 0;
-    position[1] = 0;
-    position[2] = 0;
-    velocidad = 0.0026;
+    position[0] = 0.1;
+    position[1] = 0.5f;
+    position[2] = 0.1;
+    velocidad = 0.026f;
+    
     maxBrazo = 0.12f;
     minBrazo = -0.12f;
+    dir = 1;
     
     bIzq = new float[3];
     bDer = new float[3];
@@ -43,18 +45,20 @@ Playere::Playere(){
     
     kd = new GLfloat[4];
     kd[0] = 1;
-    kd[1] = 0;
-    kd[2] = 0;
+    kd[1] = 0.3f;
+    kd[2] = 0.3f;
     kd[3] = 1.0f; //always 1
     
     ks = new GLfloat[4];
-    ks[0] = 0;
-    ks[1] = 0;
-    ks[2] = 0;
+    ks[0] = 1;
+    ks[1] = 0.3f;
+    ks[2] = 0.3f;
     ks[3] = 1.0f;
     
     alpha = new GLfloat[1];
-    alpha[0] = 50.0f;}
+    alpha[0] = 50.0f;
+    
+}
 
 
 void Playere::Draw(){
@@ -89,11 +93,12 @@ void Playere::Draw(){
 }
 
 void Playere::Moverse(){
+
     
 }
 
 void Playere::Animar(){
-    
+
     if(bDer[2] < minBrazo || bDer[2] > maxBrazo){
         dirD = -dirD;
     }
@@ -103,4 +108,22 @@ void Playere::Animar(){
     
     bIzq[2] += dirI * 0.031;
     bDer[2] += dirD * 0.031;
+    
+    if(LoR == 0)
+    {
+        position[2] += dir * velocidad;
+    }
+    else if(LoR == 1)
+    {
+        position[0] += dir * velocidad;
+    }
+    else if(LoR == 2)
+    {
+        position[2] -= dir * velocidad;
+    }
+    else if(LoR == 3)
+    {
+        position[0] -= dir * velocidad;
+    }
+    
 }

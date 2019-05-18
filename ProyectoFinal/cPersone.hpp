@@ -35,7 +35,6 @@ class Persone{
 public:
     //variables
     float* position;
-    float* oldPos;
     float radius;
     float t;
     int linea;
@@ -58,8 +57,10 @@ public:
     ~Persone();
     void Draw();
     void Update();
-    void CheckCollision(float cubeSize);
-    void OnCollision(Playere other);
+    void OnCollision(Persone* other);
+    void Chokiamos(Persone* other);
+    void onCollision2(Playere* P1);
+    void ChokiamosChief(Playere* P1);
     void Avanzar();
     void Animar();
 };

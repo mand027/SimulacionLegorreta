@@ -47,9 +47,10 @@ GLfloat* Id;
 GLfloat* Is;
 
 Camera* mainCam;
-const int numPerson = 10;
+const int numPerson = 100;
 Plano* plano;
 Persone* persone[numPerson];
+Persone* other;
 Playere* player;
 Bezier* bez[5];
 Point* ctrl[CTRL_POINTS];
@@ -60,10 +61,12 @@ float dir;
 float* pos;
 int mouseCords[2];
 int mouseMotionType = 0;
+int playerDir;
 
 
 void init( void )
 {
+    playerDir = 5;
     mainCam = new Camera();
     
     mainCam->pos.x = 0;
@@ -112,47 +115,47 @@ void init( void )
     }
     
     for (int i = 0; i < CTRL_POINTS; i++) {
-        ctrl[i] = new Point(0, 0, 0);
+        ctrl[i] = new Point(0, 0, 0.5f);
     }
     
-    ctrl[5]->x = 6; ctrl[5]->z = -1; ctrl[5]->y = 1;
-    ctrl[4]->x = 3.5; ctrl[4]->z = -2.5; ctrl[4]->y = 1;
-    ctrl[3]->x = -0.5; ctrl[3]->z = -2.5; ctrl[3]->y = 1;
-    ctrl[2]->x = -3.5; ctrl[2]->z = -2; ctrl[2]->y = 1;
-    ctrl[1]->x = -5.5; ctrl[1]->z = -1; ctrl[1]->y = 1;
-    ctrl[0]->x = -7.5; ctrl[0]->z = 2; ctrl[0]->y = 1;
+    ctrl[5]->x = 6; ctrl[5]->z = -1; ctrl[5]->y = 0.5f;
+    ctrl[4]->x = 3.5; ctrl[4]->z = -2.5; ctrl[4]->y = 0.5f;
+    ctrl[3]->x = -0.5; ctrl[3]->z = -2.5; ctrl[3]->y = 0.5f;
+    ctrl[2]->x = -3.5; ctrl[2]->z = -2; ctrl[2]->y = 0.5f;
+    ctrl[1]->x = -5.5; ctrl[1]->z = -1; ctrl[1]->y = 0.5f;
+    ctrl[0]->x = -7.5; ctrl[0]->z = 2; ctrl[0]->y = 0.5f;
     bez[0] = new Bezier(CTRL_POINTS - 1, ctrl);
     
-    ctrl[5]->x = 10; ctrl[5]->z = -3; ctrl[5]->y = 1;
-    ctrl[4]->x = 4; ctrl[4]->z = -3.5; ctrl[4]->y = 1;
-    ctrl[3]->x = -2.5; ctrl[3]->z = -3.5; ctrl[3]->y = 1;
-    ctrl[2]->x = -4.5; ctrl[2]->z = -3; ctrl[2]->y = 1;
-    ctrl[1]->x = -8.5; ctrl[1]->z = -2; ctrl[1]->y = 1;
-    ctrl[0]->x = -9.5; ctrl[0]->z = 3; ctrl[0]->y = 1;
+    ctrl[5]->x = 10; ctrl[5]->z = -3; ctrl[5]->y = 0.5f;
+    ctrl[4]->x = 4; ctrl[4]->z = -3.5; ctrl[4]->y = 0.5f;
+    ctrl[3]->x = -2.5; ctrl[3]->z = -3.5; ctrl[3]->y = 0.5f;
+    ctrl[2]->x = -4.5; ctrl[2]->z = -3; ctrl[2]->y = 0.5f;
+    ctrl[1]->x = -8.5; ctrl[1]->z = -2; ctrl[1]->y = 0.5f;
+    ctrl[0]->x = -9.5; ctrl[0]->z = 3; ctrl[0]->y = 0.5f;
     bez[1] = new Bezier(CTRL_POINTS - 1, ctrl);
     
-    ctrl[5]->x = 4; ctrl[5]->z = -1; ctrl[5]->y = 1;
-    ctrl[4]->x = 3; ctrl[4]->z = -3.5; ctrl[4]->y = 1;
-    ctrl[3]->x = -1.5; ctrl[3]->z = -3.5; ctrl[3]->y = 1;
-    ctrl[2]->x = -4.5; ctrl[2]->z = -3; ctrl[2]->y = 1;
-    ctrl[1]->x = -5.5; ctrl[1]->z = -2; ctrl[1]->y = 1;
-    ctrl[0]->x = -6.5; ctrl[0]->z = 3; ctrl[0]->y = 1;
+    ctrl[5]->x = 4; ctrl[5]->z = -1; ctrl[5]->y = 0.5f;
+    ctrl[4]->x = 3; ctrl[4]->z = -3.5; ctrl[4]->y = 0.5f;
+    ctrl[3]->x = -1.5; ctrl[3]->z = -3.5; ctrl[3]->y = 0.5f;
+    ctrl[2]->x = -4.5; ctrl[2]->z = -3; ctrl[2]->y = 0.5f;
+    ctrl[1]->x = -5.5; ctrl[1]->z = -2; ctrl[1]->y = 0.5f;
+    ctrl[0]->x = -6.5; ctrl[0]->z = 3; ctrl[0]->y = 0.5f;
     bez[2] = new Bezier(CTRL_POINTS - 1, ctrl);
     
-    ctrl[5]->x = 3; ctrl[5]->z = -1; ctrl[5]->y = 1;
-    ctrl[4]->x = 3; ctrl[4]->z = -3.5; ctrl[4]->y = 1;
-    ctrl[3]->x = -1.5; ctrl[3]->z = -3.5; ctrl[3]->y = 1;
-    ctrl[2]->x = -4.5; ctrl[2]->z = -3; ctrl[2]->y = 1;
-    ctrl[1]->x = -5.5; ctrl[1]->z = -2; ctrl[1]->y = 1;
-    ctrl[0]->x = -4.5; ctrl[0]->z = 3; ctrl[0]->y = 1;
+    ctrl[5]->x = 3; ctrl[5]->z = -1; ctrl[5]->y = 0.5f;
+    ctrl[4]->x = 3; ctrl[4]->z = -3.5; ctrl[4]->y = 0.5f;
+    ctrl[3]->x = -1.5; ctrl[3]->z = -3.5; ctrl[3]->y = 0.5f;
+    ctrl[2]->x = -4.5; ctrl[2]->z = -3; ctrl[2]->y = 0.5f;
+    ctrl[1]->x = -5.5; ctrl[1]->z = -2; ctrl[1]->y = 0.5f;
+    ctrl[0]->x = -4.5; ctrl[0]->z = 3; ctrl[0]->y = 0.5f;
     bez[3] = new Bezier(CTRL_POINTS - 1, ctrl);
     
-    ctrl[5]->x = 3; ctrl[5]->z = -1; ctrl[5]->y = 1;
-    ctrl[4]->x = 3; ctrl[4]->z = -3.5; ctrl[4]->y = 1;
-    ctrl[3]->x = -1.5; ctrl[3]->z = -3.5; ctrl[3]->y = 1;
-    ctrl[2]->x = -4.5; ctrl[2]->z = -3; ctrl[2]->y = 1;
-    ctrl[1]->x = -5.5; ctrl[1]->z = -2; ctrl[1]->y = 1;
-    ctrl[0]->x = -4.5; ctrl[0]->z = 5; ctrl[0]->y = 1;
+    ctrl[5]->x = 3; ctrl[5]->z = -1; ctrl[5]->y = 0.5f;
+    ctrl[4]->x = 3; ctrl[4]->z = -3.5; ctrl[4]->y = 0.5f;
+    ctrl[3]->x = -1.5; ctrl[3]->z = -3.5; ctrl[3]->y = 0.5f;
+    ctrl[2]->x = -4.5; ctrl[2]->z = -3; ctrl[2]->y = 0.5f;
+    ctrl[1]->x = -5.5; ctrl[1]->z = -2; ctrl[1]->y = 0.5f;
+    ctrl[0]->x = -4.5; ctrl[0]->z = 5; ctrl[0]->y = 0.5f;
     bez[4] = new Bezier(CTRL_POINTS - 1, ctrl);
     
     plano = new Plano();
@@ -161,7 +164,7 @@ void init( void )
     
     for(int i = 0; i< numPerson; i++){
         //printf("%Persona: %d", i);
-        float vel = 0.0020 + (0.0024 - 0.0020) * (float)rand() / RAND_MAX;
+        float vel = 0.0003 + (0.0006 - 0.0003) * (float)rand() / RAND_MAX;
         int linea = (rand() %5 );
 //        printf("Persona: %d, Linea: %d, Speedo: %f\n", i, linea, vel);
         persone[i] = new Persone(linea, vel);
@@ -213,6 +216,10 @@ void idle( void )
     
     for(int i = 0; i< numPerson; i++){
         
+        for(int j = 0; j< numPerson; j++){
+            if(j != i && persone[i]->linea == persone[j]->linea) persone[i]->OnCollision(persone[j]);
+        }
+
         float tAux = persone[i]->t;
         tAux += persone[i]->dir * persone[i]->velocidad;
         
@@ -225,12 +232,13 @@ void idle( void )
         persone[i]->position[2] = Try->z;
 //        printf("PosX %f | PosY %f | PosZ %f | T %f\n", Try->x,Try->y,Try->z,tAux);
         
+        persone[i]->onCollision2(player);
         persone[i]->Animar();
         persone[i]->t = tAux;
+
     }
     
-    
-    
+    player->Animar();
     glutPostRedisplay();
 }
 
@@ -267,8 +275,27 @@ void reshape( int w, int h )
     glLoadIdentity();
 }
 
-void keyboard( unsigned char key, int x, int y )
+void littleKey(unsigned char key, int x, int y)
 {
+    switch (key)
+    {
+        case 'w':
+            player->LoR = 0;
+            printf("w");
+            break;
+        case 'a':
+            player->LoR = 1;
+            printf("a");
+            break;
+        case 's':
+            player->LoR = 2;
+            printf("s");
+            break;
+        case 'd':
+            player->LoR = 3;
+            printf("d");
+            break;
+    }
 }
 
 int main( int argc, char* argv[] )
@@ -282,7 +309,7 @@ int main( int argc, char* argv[] )
     glutMouseFunc(mouse);
     glutMotionFunc(motion);
     glutReshapeFunc( reshape );
-    glutKeyboardFunc( keyboard );
+    glutKeyboardFunc( littleKey );
     init();
     glutDisplayFunc( display );
     glutIdleFunc( idle );

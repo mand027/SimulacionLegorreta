@@ -29,4 +29,8 @@ public:
     ~Plano();
     void draw();
     void update();
+    GLfloat* ka;
+    GLfloat* kd;
+    GLfloat* ks;
+    GLfloat* alpha;
 };
