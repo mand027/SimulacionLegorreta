@@ -13,7 +13,10 @@
 #include "cPlano.hpp"
 
 Plano::Plano() {
-    plano = glmReadOBJ("assets/plane.obj");
+    //plano = glmReadOBJ("assets/plane.obj");
+    plano = glmReadOBJ("assets/Legorreta.obj");
+    glmUnitize(plano);
+    glmScale(plano, 15.0);
     
     ka = new GLfloat[4];
     ka[0] = 1; //red
@@ -42,11 +45,16 @@ Plano::~Plano() {
 
 void Plano::draw() {
     
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ka);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, kd);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, ks);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, alpha);
-    glmDraw(plano, GLM_SMOOTH | GLM_TEXTURE);
+    
+    glPushMatrix();
+    {
+        glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ka);
+        glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, kd);
+        glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, ks);
+        glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, alpha);
+        glmDraw(plano, GLM_SMOOTH | GLM_TEXTURE );
+    }
+    glPopMatrix();
 
 }
 

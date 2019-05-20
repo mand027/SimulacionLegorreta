@@ -69,8 +69,8 @@ void init( void )
     playerDir = 5;
     mainCam = new Camera();
     
-    mainCam->pos.x = 0;
-    mainCam->pos.y = 20.0f;
+    mainCam->pos.x = 0.0f;
+    mainCam->pos.y = 30.0f;
     mainCam->pos.z = 0.0f;
     mainCam->dir.x = 0;
     mainCam->dir.y = 0;
@@ -118,44 +118,44 @@ void init( void )
         ctrl[i] = new Point(0, 0, 0.5f);
     }
     
-    ctrl[5]->x = 6; ctrl[5]->z = -1; ctrl[5]->y = 0.5f;
-    ctrl[4]->x = 3.5; ctrl[4]->z = -2.5; ctrl[4]->y = 0.5f;
-    ctrl[3]->x = -0.5; ctrl[3]->z = -2.5; ctrl[3]->y = 0.5f;
-    ctrl[2]->x = -3.5; ctrl[2]->z = -2; ctrl[2]->y = 0.5f;
-    ctrl[1]->x = -5.5; ctrl[1]->z = -1; ctrl[1]->y = 0.5f;
-    ctrl[0]->x = -7.5; ctrl[0]->z = 2; ctrl[0]->y = 0.5f;
+    ctrl[5]->x = 8; ctrl[5]->z = -0.6; ctrl[5]->y = 0.0f;
+    ctrl[4]->x = 5.5; ctrl[4]->z = -0.4; ctrl[4]->y = 0.0f;
+    ctrl[3]->x = 2.5; ctrl[3]->z = 0; ctrl[3]->y = 0.0f;
+    ctrl[2]->x = -0.5; ctrl[2]->z = 1; ctrl[2]->y = 0.0f;
+    ctrl[1]->x = -3.0; ctrl[1]->z = 1.5; ctrl[1]->y = 0.0f;
+    ctrl[0]->x = -5; ctrl[0]->z = 4; ctrl[0]->y = 0.0f;
     bez[0] = new Bezier(CTRL_POINTS - 1, ctrl);
     
-    ctrl[5]->x = 10; ctrl[5]->z = -3; ctrl[5]->y = 0.5f;
-    ctrl[4]->x = 4; ctrl[4]->z = -3.5; ctrl[4]->y = 0.5f;
-    ctrl[3]->x = -2.5; ctrl[3]->z = -3.5; ctrl[3]->y = 0.5f;
-    ctrl[2]->x = -4.5; ctrl[2]->z = -3; ctrl[2]->y = 0.5f;
-    ctrl[1]->x = -8.5; ctrl[1]->z = -2; ctrl[1]->y = 0.5f;
-    ctrl[0]->x = -9.5; ctrl[0]->z = 3; ctrl[0]->y = 0.5f;
+    ctrl[5]->x = 0; ctrl[5]->z = 6.5; ctrl[5]->y = 0.0f;
+    ctrl[4]->x = 0.2; ctrl[4]->z = 5.5; ctrl[4]->y = 0.0f;
+    ctrl[3]->x = 0.0; ctrl[3]->z = 4; ctrl[3]->y = 0.0f;
+    ctrl[2]->x = -0.5; ctrl[2]->z = 2; ctrl[2]->y = 0.0f;
+    ctrl[1]->x = -3.0; ctrl[1]->z = -0.5; ctrl[1]->y = 0.0f;
+    ctrl[0]->x = -5; ctrl[0]->z = 4; ctrl[0]->y = 0.0f;
     bez[1] = new Bezier(CTRL_POINTS - 1, ctrl);
     
-    ctrl[5]->x = 4; ctrl[5]->z = -1; ctrl[5]->y = 0.5f;
-    ctrl[4]->x = 3; ctrl[4]->z = -3.5; ctrl[4]->y = 0.5f;
-    ctrl[3]->x = -1.5; ctrl[3]->z = -3.5; ctrl[3]->y = 0.5f;
-    ctrl[2]->x = -4.5; ctrl[2]->z = -3; ctrl[2]->y = 0.5f;
-    ctrl[1]->x = -5.5; ctrl[1]->z = -2; ctrl[1]->y = 0.5f;
-    ctrl[0]->x = -6.5; ctrl[0]->z = 3; ctrl[0]->y = 0.5f;
+    ctrl[5]->x = -3.5; ctrl[5]->z = -7.6; ctrl[5]->y = 0.0f;
+    ctrl[4]->x = -3; ctrl[4]->z = -5.4; ctrl[4]->y = 0.0f;
+    ctrl[3]->x = -2.3; ctrl[3]->z = -2.5; ctrl[3]->y = 0.0f;
+    ctrl[2]->x = -1; ctrl[2]->z = 0; ctrl[2]->y = 0.0f;
+    ctrl[1]->x = -2.0; ctrl[1]->z = 2.5; ctrl[1]->y = 0.0f;
+    ctrl[0]->x = -5; ctrl[0]->z = 4; ctrl[0]->y = 0.0f;
     bez[2] = new Bezier(CTRL_POINTS - 1, ctrl);
     
-    ctrl[5]->x = 3; ctrl[5]->z = -1; ctrl[5]->y = 0.5f;
-    ctrl[4]->x = 3; ctrl[4]->z = -3.5; ctrl[4]->y = 0.5f;
-    ctrl[3]->x = -1.5; ctrl[3]->z = -3.5; ctrl[3]->y = 0.5f;
-    ctrl[2]->x = -4.5; ctrl[2]->z = -3; ctrl[2]->y = 0.5f;
-    ctrl[1]->x = -5.5; ctrl[1]->z = -2; ctrl[1]->y = 0.5f;
-    ctrl[0]->x = -4.5; ctrl[0]->z = 3; ctrl[0]->y = 0.5f;
+    ctrl[5]->x = 8; ctrl[5]->z = -0.6; ctrl[5]->y = 0.0f;
+    ctrl[4]->x = 5.5; ctrl[4]->z = -0.4; ctrl[4]->y = 0.0f;
+    ctrl[3]->x = 2.5; ctrl[3]->z = 0; ctrl[3]->y = 0.0f;
+    ctrl[2]->x = -0.5; ctrl[2]->z = 1; ctrl[2]->y = 0.0f;
+    ctrl[1]->x = -3.0; ctrl[1]->z = 1.5; ctrl[1]->y = 0.0f;
+    ctrl[0]->x = -5; ctrl[0]->z = 4; ctrl[0]->y = 0.0f;
     bez[3] = new Bezier(CTRL_POINTS - 1, ctrl);
     
-    ctrl[5]->x = 3; ctrl[5]->z = -1; ctrl[5]->y = 0.5f;
-    ctrl[4]->x = 3; ctrl[4]->z = -3.5; ctrl[4]->y = 0.5f;
-    ctrl[3]->x = -1.5; ctrl[3]->z = -3.5; ctrl[3]->y = 0.5f;
-    ctrl[2]->x = -4.5; ctrl[2]->z = -3; ctrl[2]->y = 0.5f;
-    ctrl[1]->x = -5.5; ctrl[1]->z = -2; ctrl[1]->y = 0.5f;
-    ctrl[0]->x = -4.5; ctrl[0]->z = 5; ctrl[0]->y = 0.5f;
+    ctrl[5]->x = 0; ctrl[5]->z = 6.5; ctrl[5]->y = 0.0f;
+    ctrl[4]->x = 0.2; ctrl[4]->z = 5.5; ctrl[4]->y = 0.0f;
+    ctrl[3]->x = 0.0; ctrl[3]->z = 4; ctrl[3]->y = 0.0f;
+    ctrl[2]->x = -0.5; ctrl[2]->z = 2; ctrl[2]->y = 0.0f;
+    ctrl[1]->x = -3.0; ctrl[1]->z = -0.5; ctrl[1]->y = 0.0f;
+    ctrl[0]->x = -5; ctrl[0]->z = 4; ctrl[0]->y = 0.0f;
     bez[4] = new Bezier(CTRL_POINTS - 1, ctrl);
     
     plano = new Plano();
@@ -170,10 +170,13 @@ void init( void )
         persone[i] = new Persone(linea, vel);
     }
     
-    
+    glEnable( GL_DEPTH_TEST );
+    glEnable( GL_TEXTURE_2D );
+    glClearColor(0.0, 0.0, 0.0, 0.0);                                // Clear the color state.
     
     glEnable( GL_LIGHTING );
     glEnable( GL_LIGHT0 );
+    glEnable( GL_LIGHT1 );
     
     glLightfv(GL_LIGHT0, GL_POSITION, L0pos);
     glLightfv(GL_LIGHT0, GL_AMBIENT, Ia);
@@ -184,10 +187,15 @@ void init( void )
     glLightfv(GL_LIGHT1, GL_AMBIENT, Ia);
     glLightfv(GL_LIGHT1, GL_DIFFUSE, Id);
     glLightfv(GL_LIGHT1, GL_SPECULAR, Is);
-
-    glEnable( GL_DEPTH_TEST );
-    glEnable( GL_TEXTURE_2D );
-    glClearColor(0.0, 0.0, 0.0, 0.0);                                // Clear the color state.
+    
+//    global_ambient = new GLfloat[4];
+//    global_ambient[0] = 0.3f;
+//    global_ambient[1] = 0.3f;
+//    global_ambient[2] = 0.3f;
+//    global_ambient[3] = 1.0f;
+//    glLightModelfv( GL_LIGHT_MODEL_AMBIENT, global_ambient );
+//    glLightModeli( GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE );
+//    glLightModeli( GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE );
 
     glMatrixMode(GL_MODELVIEW);                                      // Go to 3D mode.
     glLoadIdentity();
@@ -208,6 +216,10 @@ void display( void )
         persone[i]->Draw();
     }
     player->Draw();
+    
+    // Development only
+    //bez[3]->draw();
+    
     glutSwapBuffers();
 }
 

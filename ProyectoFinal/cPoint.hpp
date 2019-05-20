@@ -39,6 +39,6 @@ public:
     void update();
     Point* multiplyByScalar(float s);
     Point* add(Point* other);
-    
+    void draw();
 };
 

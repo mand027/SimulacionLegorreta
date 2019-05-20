@@ -26,4 +26,7 @@ public:
     int degree;
     Point** ctrlPoints;
     float* coefficient;
+    
+    // Development only
+    void draw();
 };

@@ -59,3 +59,10 @@ Point* Bezier::evaluateBezier(float t) {
     }
     return p;
 }
+
+// Development only
+void Bezier::draw() {
+    for (int i = 0; i < 6; i++) {
+        ctrlPoints[i]->draw();
+    }
+}

@@ -24,6 +24,7 @@
 class Plano {
 public:
     GLMmodel* plano;
+    //GLMmodel* edificio;
     
     Plano();
     ~Plano();

@@ -49,3 +49,13 @@ Point* Point::add(Point* other) {
 void Point::update() {
     
 }
+
+void Point::draw() {
+    glPushMatrix();
+    {
+        glTranslatef(x, y, z);
+        glColor3f(1, 0, 0);
+        glutSolidSphere(0.4, 10, 10);
+    }
+    glPopMatrix();
+}
